@@ -23,7 +23,7 @@ public class InventoryController {
     @PostMapping("/add")
     public ResponseEntity<String> addInventory(@RequestBody Inventory inventory) {
         try {
-            inventoryService.addFruitStock(inventory.getFruitName(), inventory.getQuantity());
+            inventoryService.addFruitStock(inventory.getFruitName(), inventory.getQuantity(), inventory.getCategory());
             return ResponseEntity.ok("Added fruit " + inventory.getFruitName());
         }catch (Exception e) {
             e.printStackTrace();

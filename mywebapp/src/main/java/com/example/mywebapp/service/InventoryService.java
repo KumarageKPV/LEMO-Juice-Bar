@@ -20,10 +20,10 @@ public class InventoryService {
         return inventoryRepository.findAll();
     }
 
-    public void addFruitStock(String fruitName , double quantity){
+    public void addFruitStock(String fruitName , double quantity , String category){
         Inventory inventory = inventoryRepository.findByFruitName(fruitName);
         if(inventory == null){
-            inventory = new Inventory(fruitName, quantity);
+            inventory = new Inventory(fruitName, quantity , category);
             inventoryRepository.save(inventory);
         }else {
             inventory.setQuantity(inventory.getQuantity()+quantity);

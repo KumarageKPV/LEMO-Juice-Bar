@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/juice")
 public class JuiceController {
@@ -37,10 +38,13 @@ public class JuiceController {
             @PathVariable long id,
             @RequestParam double newPrice,
             @RequestBody(required = false) List<FruitUsage> newFruitUsage) {
-
         Juice updatedJuice = juiceService.updateJuiceDetails(id, newPrice, newFruitUsage);
         return ResponseEntity.ok(updatedJuice);
     }
 
+    @GetMapping
+    public ResponseEntity<List<Juice>> getAllJuices() {
+        return ResponseEntity.ok(juiceService.getAllJuices());
+    }
 
 }

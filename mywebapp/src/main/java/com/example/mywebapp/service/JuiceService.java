@@ -27,6 +27,9 @@ public class JuiceService {
     public void deleteJuice(long juiceId) {
         Juice juice = juiceRepository.findById(juiceId)
                 .orElseThrow(() -> new RuntimeException("Juice not found"));
+        juice.getFruitUsages().clear();
+        juiceRepository.save(juice);
+        
         juiceRepository.delete(juice);
     }
 
@@ -61,6 +64,8 @@ public class JuiceService {
         return juiceRepository.save(juice);
     }
 
-
+    public List<Juice> getAllJuices() {
+        return juiceRepository.findAll();
+    }
 
 }
