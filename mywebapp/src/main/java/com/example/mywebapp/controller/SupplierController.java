@@ -32,4 +32,9 @@ public class SupplierController {
         supplierService.getAllSuppliers();
         return ResponseEntity.ok(supplierService.getAllSuppliers());
     }
+
+    @PutMapping("/{supplierId}")
+    public Supplier updateSupplier(@PathVariable Long supplierId, @RequestBody Supplier supplier) {
+        return supplierService.updateSupplier(supplierId, supplier);
+    }
 }

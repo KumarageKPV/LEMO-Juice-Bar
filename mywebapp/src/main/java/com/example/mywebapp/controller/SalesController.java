@@ -54,4 +54,14 @@ public class SalesController {
         // Return the created sales response
         return new ResponseEntity<>(savedSales, HttpStatus.CREATED);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteSaleById(@PathVariable int id) {
+        try {
+            salesService.deleteSalesById(id);
+            return ResponseEntity.ok("Sale deleted successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Sale not found");
+        }
+    }
 }
