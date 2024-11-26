@@ -6,6 +6,8 @@ import com.example.mywebapp.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin
 @RestController
 @RequestMapping("api/users")
@@ -16,6 +18,11 @@ public class UserController {
     public UserController(UserService userService, UserRepository userRepository) {
         this.userService = userService;
         this.userRepository = userRepository;
+    }
+
+    @GetMapping
+    public ResponseEntity<List<User>> getAllUsers() {
+        return ResponseEntity.ok(userRepository.findAll());
     }
 
     @PostMapping("/create")
@@ -42,4 +49,25 @@ public class UserController {
         }
     }
 
+    @PutMapping("/password")
+    public ResponseEntity<String> updatePassword(@RequestBody User user ) {
+        try {
+            String response = userService.updatePassword(user.getUsername(), user.getPassword());
+            return ResponseEntity.ok(response);
+        }catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @DeleteMapping
+    public ResponseEntity<String> deleteUser(@RequestBody User user) {
+        try {
+            String response = userService.deleteAccount(user.getUsername());
+            return ResponseEntity.ok(response);
+        }
+        catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+
+        }
+    }
 }
