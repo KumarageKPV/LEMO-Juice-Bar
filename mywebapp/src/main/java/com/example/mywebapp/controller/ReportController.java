@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")  // Allow requests from the frontend's origin (update accordingly)
+@CrossOrigin(origins = "http://localhost:00")  // Allow requests from the frontend's origin (update accordingly)
 @RequestMapping("/api/reports")
 public class ReportController {
 
