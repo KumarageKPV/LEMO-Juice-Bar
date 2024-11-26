@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Management</title>
+  <link rel="stylesheet" href="user.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo-container">
+          <a href="/Components/Dashboard/Dashboard.html">
+            <img src="/Components/logo.png" alt="Logo" class="logo">
+          </a>
+        </div>
+        <ul>
+          <li><a href="/Components/Dashboard/Dashboard.html" id="dashboard-link">Dashboard</a></li>
+          <li><a href="/Components/Sales/Sales.html" id="sales-link">Sales</a></li>
+          <li><a href="/Components/Orders/orders.html" id="orders-link">Orders</a></li>
+          <li><a href="/Components/Users/users.html" id="users-link">Users</a></li>
+          <li><a href="/Components/Report/Report.html" id="report-link">Report</a></li>
+          <li class="logout-container">
+            <button id="logout-btn" class="logout-btn">Logout</button>
+          </li>
+        </ul>
+      </nav>
+      
+  <div class="container">
+    <h1>User Management</h1>
+    
+    <!-- Buttons -->
+    <div class="button-container">
+      <button id="change-password-btn" class="action-btn">Change Password</button>
+      <button id="delete-user-btn" class="action-btn">Delete User</button>
+      <button id="create-account-btn" class="action-btn">Create Account</button>
+    </div>
+
+    <!-- Users Table -->
+    <table id="users-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Username</th>
+          <th>Role</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Rows will be dynamically generated -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Modals -->
+  <div id="change-password-modal" class="modal">
+    <div class="modal-content">
+      <h2>Change Password</h2>
+      <form id="change-password-form">
+        <label for="change-username">Username:</label>
+        <input type="text" id="change-username" required>
+        <label for="new-password">New Password:</label>
+        <input type="password" id="new-password" required>
+        <button type="submit" class="submit-btn">Update Password</button>
+        <button type="button" class="close-btn">Cancel</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="delete-user-modal" class="modal">
+    <div class="modal-content">
+      <h2>Delete User</h2>
+      <form id="delete-user-form">
+        <label for="delete-username">Username:</label>
+        <input type="text" id="delete-username" required>
+        <button type="submit" class="submit-btn">Delete User</button>
+        <button type="button" class="close-btn">Cancel</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="create-account-modal" class="modal">
+    <div class="modal-content">
+      <h2>Create Account</h2>
+      <form id="create-account-form">
+        <label for="new-username">Username:</label>
+        <input type="text" id="new-username" required>
+        <label for="create-password">Password:</label>
+        <input type="password" id="create-password" required>
+        <label for="user-role">Role:</label>
+        <select id="user-role" required>
+          <option value="EMPLOYEE">Employee</option>
+          <option value="OWNER">Owner</option>
+        </select>
+        <button type="submit" class="submit-btn">Create Account</button>
+        <button type="button" class="close-btn">Cancel</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="user.js"></script>
+  <script src="/Components/Sidebar.js"></script> <!-- Link to external JS file -->
+
+</body>
+</html>
