@@ -5,6 +5,7 @@ import com.example.mywebapp.service.ExportService;
 import com.example.mywebapp.service.ReportService;
 import com.example.mywebapp.model.Sales;
 import com.example.mywebapp.model.Juice;
+import com.example.mywebapp.model.Supplier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -237,6 +238,70 @@ public class ReportController {
             handleError(response, "Unexpected error during report export", e);
         }
     }
+
+    @GetMapping("/supplier")
+    public ResponseEntity<?> exportSupplierToJson() {
+        try {
+            List<Supplier> supplierList = reportService.generateSupplierReport(); // Fetch supplier data
+            if (supplierList.isEmpty()) {
+                return ResponseEntity.noContent().build(); // No content
+            }
+            return ResponseEntity.ok(supplierList); // Return the supplier list as JSON
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error exporting supplier report to JSON");
+        }
+    }
+
+    @GetMapping("/supplier/export/csv")
+    public void exportSupplierToCsv(HttpServletResponse response) {
+        try {
+            response.setContentType("text/csv");
+            response.setHeader("Content-Disposition", "attachment; filename=\"supplier_report.csv\"");
+
+            List<Supplier> supplierList = reportService.generateSupplierReport(); // Fetch supplier data
+
+            if (supplierList.isEmpty()) {
+                response.setStatus(HttpServletResponse.SC_NO_CONTENT);
+                response.getWriter().write("No supplier data found.");
+                response.getWriter().flush();
+                return;
+            }
+
+            exportService.exportSupplierToCsv(supplierList, response.getOutputStream()); // Call the export service for CSV
+        } catch (IOException e) {
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            e.printStackTrace();
+        }
+    }
+
+
+
+    @GetMapping("/supplier/export/pdf")
+    public void exportSupplierToPdf(HttpServletResponse response) {
+        try {
+            response.setContentType("application/pdf");
+            response.setHeader("Content-Disposition", "inline; filename=\"supplier_report.pdf\"");
+
+            List<Supplier> supplierList = reportService.generateSupplierReport(); // Fetch supplier data
+
+            if (supplierList.isEmpty()) {
+                response.setStatus(HttpServletResponse.SC_NO_CONTENT);
+                response.getWriter().write("No supplier data found.");
+                return;
+            }
+
+            exportService.exportSupplierToPdf(supplierList, response.getOutputStream()); // Call the export service for PDF
+        } catch (IOException e) {
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            e.printStackTrace();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+
+
 
 
 

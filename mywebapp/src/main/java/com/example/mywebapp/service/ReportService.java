@@ -3,9 +3,12 @@ package com.example.mywebapp.service;
 import com.example.mywebapp.model.Inventory;
 import com.example.mywebapp.model.Juice;
 import com.example.mywebapp.model.Sales;
+import com.example.mywebapp.model.Supplier;
 import com.example.mywebapp.repository.InventoryRepository;
 import com.example.mywebapp.repository.JuiceRepository;
 import com.example.mywebapp.repository.SalesRepository;
+import com.example.mywebapp.repository.SupplierRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
@@ -16,16 +19,21 @@ import java.util.Map;
 
 @Service
 public class ReportService {
+    @Autowired
     private final SalesRepository salesRepository;
     private final InventoryRepository inventoryRepository;
     private final JuiceRepository juiceRepository;
+    private final SupplierRepository supplierRepository; // Added missing @Autowired for SupplierRepository
 
+    @Autowired
     public ReportService(SalesRepository salesRepository,
                          InventoryRepository inventoryRepository,
-                         JuiceRepository juiceRepository) {
+                         JuiceRepository juiceRepository,
+                         SupplierRepository supplierRepository) {
         this.salesRepository = salesRepository;
         this.inventoryRepository = inventoryRepository;
         this.juiceRepository = juiceRepository;
+        this.supplierRepository = supplierRepository; // Initialize supplierRepository
     }
 
     // Generate a sales report based on a date range
@@ -39,6 +47,7 @@ public class ReportService {
         return inventoryRepository.findAll();
     }
 
+    // Generate a juice performance report
     public List<Map<String, Object>> generateJuicePerformanceReport() {
         List<Object[]> results = juiceRepository.findTopSellingJuices(); // Get results from query
         List<Map<String, Object>> performanceReport = new ArrayList<>();
@@ -60,4 +69,9 @@ public class ReportService {
         return performanceReport; // Return the report as a list of maps
     }
 
+    // Method to generate the supplier report
+    public List<Supplier> generateSupplierReport() {
+        // Fetch all suppliers from the repository (can be modified if any filtering is needed)
+        return supplierRepository.findAll(); // This will return all suppliers
+    }
 }

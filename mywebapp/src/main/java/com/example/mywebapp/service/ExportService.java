@@ -191,6 +191,45 @@ public class ExportService {
         document.close();
     }
 
+    public void exportSupplierToCsv(List<Supplier> supplierList, OutputStream outputStream) throws IOException {
+        try (PrintWriter writer = new PrintWriter(outputStream)) {
+            // Write CSV headers
+            writer.println("Supplier ID,Name,Email,Phone");
+
+            // Loop through the supplier list and write data rows to the CSV
+            for (Supplier supplier : supplierList) {
+                writer.printf("%d,%s,%s,%s%n",
+                        supplier.getId(),
+                        supplier.getName(),
+                        supplier.getEmail(),
+                        supplier.getPhone());
+            }
+        }
+    }
+
+    public void exportSupplierToPdf(List<Supplier> supplierList, OutputStream outputStream) throws Exception {
+        PdfWriter writer = new PdfWriter(outputStream);
+        PdfDocument pdf = new PdfDocument(writer);
+        Document document = new Document(pdf);
+
+        // Title of the PDF
+        document.add(new Paragraph("Supplier Report").setFont(createBoldFont()).setFontSize(16));
+
+        // Loop through supplier list and add details to the PDF
+        for (Supplier supplier : supplierList) {
+            document.add(new Paragraph("Supplier ID: " + supplier.getId()));
+            document.add(new Paragraph("Name: " + supplier.getName()));
+            document.add(new Paragraph("Email: " + supplier.getEmail()));
+            document.add(new Paragraph("Phone: " + supplier.getPhone()));
+            document.add(new Paragraph("---------------------------"));
+        }
+
+        document.close(); // Close the document after adding the data
+    }
+
+
+
+
     // Helper method to create a bold font for PDF
     private PdfFont createBoldFont() {
         try {
