@@ -68,7 +68,9 @@ public class ExportService {
                 String juiceId = juiceData.get("id").toString();
                 String juiceName = (String) juiceData.get("name");
                 Double price = (Double) juiceData.get("price");
-                Integer totalSold = (Integer) juiceData.get("totalSold");
+                Long totalSoldLong = (Long) juiceData.get("totalSold");
+                Integer totalSold = totalSoldLong.intValue();
+
 
                 // Write the basic juice details
                 StringBuilder row = new StringBuilder();
