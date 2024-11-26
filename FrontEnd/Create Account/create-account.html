@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="account-container">
+        <div class="account-box">
+            <h2>Create Account</h2>
+            <form id="create-account-form">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required placeholder="Enter a username">
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter a password">
+                </div>
+                <div class="input-group">
+                    <label for="role">Role</label>
+                    <select id="role" name="role" required>
+                        <option value="EMPLOYEE">Employee</option>
+                        <option value="ADMIN">Admin</option>
+                    </select>
+                </div>
+                <button type="submit" class="create-btn">Create Account</button>
+                <div id="error-message" class="error-message hidden">Account creation failed</div>
+                <div id="success-message" class="success-message hidden">Account created successfully!</div>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
