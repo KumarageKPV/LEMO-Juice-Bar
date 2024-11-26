@@ -32,6 +32,15 @@ public class SupplierService {
         return supplierRepository.findAll();
     }
 
+    public Supplier updateSupplier(long supplierId , Supplier updatedSupplier) {
+        Supplier existingSupplier = supplierRepository.findById(supplierId)
+                .orElseThrow(() -> new RuntimeException("Supplier not found"));
+
+        existingSupplier.setName(updatedSupplier.getName());
+        existingSupplier.setEmail(updatedSupplier.getEmail());
+        existingSupplier.setPhone(updatedSupplier.getPhone());
+        return supplierRepository.save(existingSupplier);
+    }
 
 }
 

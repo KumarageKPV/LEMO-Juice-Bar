@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/orders")
+@CrossOrigin
 public class OrdersController {
     private static final Logger logger = LoggerFactory.getLogger(OrdersController.class);
     @Autowired
