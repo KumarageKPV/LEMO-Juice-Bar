@@ -1,0 +1,436 @@
+/* Reset default margin and padding for all elements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* General body styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4; /* Light gray background */
+}
+
+/* Dashboard wrapper styling */
+.dashboard-wrapper {
+  background-color: #00224f; /* Dark blue background */
+  padding: 30px;
+  width: calc(100% - 40px);
+  max-width: 100vw;
+  margin: 20px;
+  position: relative;
+}
+
+/* Icon container for the dashboard actions */
+.icon-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  margin-left: 15px;
+  cursor: pointer;
+  color: #1d69a8; /* Icon color updated for consistency */
+}
+
+/* Main content container */
+.main-content {
+  padding: 20px;
+}
+
+/* Header styling */
+h2 {
+  color: #ffffff; /* White text for header */
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Dashboard stats box layout */
+.dashboard-stats {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.stat-box {
+  background-color: #eaeff1; /* Light gray for stats box */
+  padding: 20px;
+  border-radius: 5px;
+  width: 48%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.stat-box p {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  color: #555; /* Neutral gray for text */
+}
+
+.stat-box h3 {
+  font-size: 2rem;
+  color: #00224f; /* Dark blue for key numbers */
+}
+
+/*================================================= Search bar  styling =================================================*/
+
+/* Search bar container */
+.search-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px;
+}
+
+
+.search-bar {
+  padding: 8px;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+/* Add item button icon */
+.add-item-icon {
+  margin-left: 10px;
+  width: 110px;
+  height: 45px;
+  cursor: pointer;
+}
+
+/* Add Juice button icon */
+.add-item-icon {
+  height: 45px; /* Adjust to the desired height */
+  width: 110px; /* You can also adjust the width if needed */
+  cursor: pointer;
+}
+
+/* Product list container */
+.product-list {
+  margin: 0 20px;
+}
+
+
+
+/*================================================= Table styling for the product list =================================================*/
+.product-list table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.product-list th, 
+.product-list td {
+  padding: 15px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.product-list th {
+  background-color: #003366; /* Updated header background */
+  color: white; /* White header text */
+}
+
+/* Even row styling */
+.product-list tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+/* Button styling */
+.edit-btn, 
+.delete-btn {
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+/* Edit button styling */
+.edit-btn {
+  background-color: #1370ab; /* Updated blue for edit */
+  color: white;
+  margin-right: 10px;
+}
+
+/* Delete button styling */
+.delete-btn {
+  background-color: #e74c3c; /* Updated red for delete */
+  color: white;
+}
+
+/* Table row styling */
+.product-list table tbody tr {
+  background-color: #e0f7fa;
+}
+
+.product-list table tbody tr:nth-child(even) {
+  background-color: #b2ebf2;
+}
+
+/*================================================= Modal styling for adding item =================================================*/
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    overflow: auto;
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 5px;
+    width: 300px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4
+ );
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+    font-size: 20px;
+    text-align: center;
+    color: #00224f; /* Consistent dark blue for headers */
+}
+
+.modal-content form input {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #BDC3C7;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+.modal-content form input:focus {
+    border-color: #1370ab;
+}
+
+.modal-content form button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #1370ab;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.modal-content form button:hover {
+    background-color: #125a8c;
+}
+
+.modal-content form button[type="button"] {
+    background-color: #e74c3c; /* Cancel button red */
+}
+
+.modal-content form button[type="button"]:hover {
+    background-color: #c0392b;
+}
+
+/*================================================= Delete item modal styling =================================================*/
+#delete-item-modal button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  color: white;
+  width: 45%; /* Make buttons the same width */
+}
+
+/* Confirm delete button styling */
+#delete-item-modal #confirm-delete {
+  background-color: #e74c3c; /* Red for delete */
+}
+
+#delete-item-modal #confirm-delete:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}
+
+/* Cancel delete button styling */
+#delete-item-modal #cancel-delete {
+  background-color: #1370ab; /* Green for cancel */
+}
+
+#delete-item-modal #cancel-delete:hover {
+  background-color: #003366; /* Darker green on hover */
+}
+
+/* Add New Product Modal - Close button styling */
+#add-item-modal #close-modal {
+  background-color: #e74c3c; /* Red background */
+  color: white; /* White text */
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%; /* Full width button */
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+#add-item-modal #close-modal:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}
+
+/*================================================= Edit Product Modal - Close button styling =================================================*/
+#edit-item-modal #close-edit-modal {
+  background-color: #e74c3c; /* Red background */
+  color: white; /* White text */
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%; /* Full width button */
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+#edit-item-modal #close-edit-modal:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}
+
+/* Responsive adjustment for smaller screens */
+@media (max-width: 600px) {
+  #delete-item-modal .modal-content {
+      width: 80%; /* Ensure the modal takes up more screen width on small devices */
+  }
+
+  #delete-item-modal .modal-content h2 {
+      font-size: 18px; /* Slightly smaller font size for small screens */
+  }
+
+  #delete-item-modal button {
+      font-size: 14px; /* Smaller font size for buttons on mobile */
+  }
+}
+
+/*================================================= Category choice dropdown styling =================================================*/
+.filter-dropdown {
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+/*=================================================  Styling for Low Stock tab  =================================================*/
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 600px;
+}
+
+.modal table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.modal table th, .modal table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.modal button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.modal button:hover {
+  background-color: #45a049;
+}
+
+/*=================================================  Styling for out of stack tab =================================================*/
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 600px;
+}
+
+.modal table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.modal table th, .modal table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.modal textarea {
+  width: 100%;
+  height: 80px;
+  padding: 10px;
+  margin-top: 10px;
+  resize: vertical;
+}
+
+.modal button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.modal button:hover {
+  background-color: #45a049;
+}
+
+
+
