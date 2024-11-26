@@ -4,12 +4,18 @@ import com.example.mywebapp.model.User;
 import com.example.mywebapp.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
     private UserRepository userRepository;
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
+    }
+
+    public List<User> findAll() {
+        return userRepository.findAll();
     }
 
     public void createAccount(User user) {
@@ -26,6 +32,32 @@ public class UserService {
             throw new IllegalArgumentException("Invalid password");
         }
         return storedUser.getRole();
+    }
+
+    public String updatePassword(String username, String newPassword) {
+        // Find the user by their username
+        User storedUser = userRepository.findByUsername(username);
+
+        if (storedUser == null) {
+            throw new IllegalArgumentException("User not found");
+        }
+
+        // Update the password
+        storedUser.setPassword(newPassword);
+
+        // Save the updated user information
+        userRepository.save(storedUser);
+
+        return "Password updated successfully";
+    }
+
+    public String deleteAccount(String username) {
+        User storedUser = userRepository.findByUsername(username);
+        if (storedUser == null) {
+            throw new IllegalArgumentException("User not found");
+        }
+        userRepository.delete(storedUser);
+        return "User deleted successfully";
     }
 
 }
