@@ -5,6 +5,65 @@
     box-sizing: border-box;
   }
   
+  /* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Navbar Styling */
+.navbar {
+  background-color: #4a90e2;  /* Dark background for the navbar */
+  width: 100%;
+  padding: 10px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;  /* Keep the navbar on top */
+}
+
+/* Navbar List */
+.navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;  /* Center the items */
+  align-items: center;  /* Vertically align items */
+}
+
+/* Navbar List Items */
+.navbar ul li {
+  padding: 0 20px;  /* Space between items */
+}
+
+/* Navbar Links */
+.navbar ul li a {
+  text-decoration: none;
+  color: white;  /* White text color */
+  font-size: 18px;  /* Larger text for clarity */
+  padding: 10px 15px;
+  display: block;
+  transition: background-color 0.3s ease;  /* Smooth transition effect */
+}
+
+/* Hover Effect on Links */
+.navbar ul li a:hover {
+  background-color: #555;  /* Darker shade when hovering */
+  border-radius: 5px;  /* Rounded corners on hover */
+}
+
+/* Active Link Styling */
+.navbar ul li a.active {
+  background-color: #777;  /* Different color for the active link */
+  font-weight: bold;  /* Make active link bold */
+  border-radius: 5px;
+}
+
+/* Adjust Content Area for Navbar */
+body {
+  margin-top: 60px;  /* Add space for the fixed navbar at the top */
+}
+
   body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f9;
@@ -391,5 +450,104 @@
   
   #error-message.error {
     display: block;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #4a90e2;
+    padding: 10px 20px;
+  }
+  
+  .navbar ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    align-items: center;
+  }
+  
+  .navbar ul li {
+    margin-right: 20px;
+  }
+  
+  .navbar ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .logout-container {
+    margin-left: auto; /* Push the logout button to the far right */
+  }
+  
+  .logout-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .logout-btn:hover {
+    background-color: #c0392b;
+  }
+  
+  .navbar {
+    display: flex;
+    align-items: center;
+    background-color: #4a90e2;
+    padding: 10px 20px;
+  }
+  
+  .logo-container {
+    margin-right: 20px; /* Adds space between logo and navigation links */
+  }
+  
+  .logo {
+    height: 40px; /* Adjust height of the logo */
+    width: auto; /* Maintain aspect ratio */
+  }
+  
+  .navbar ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    align-items: center;
+  }
+  
+  .navbar ul li {
+    margin-right: 20px;
+  }
+  
+  .navbar ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .logout-container {
+    margin-left: auto; /* Push logout button to the far right */
+  }
+  
+  .logout-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .logout-btn:hover {
+    background-color: #c0392b;
   }
   

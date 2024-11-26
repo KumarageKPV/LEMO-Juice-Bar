@@ -4,11 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Order List Dashboard</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="OrderStyles.css">
 </head>
 <body>
+  <!-- Horizontal Navbar -->
+  <nav class="navbar">
+    <div class="logo-container">
+      <a href="/Components/Dashboard/Dashboard.html">
+        <img src="/Components/logo.png" alt="Logo" class="logo">
+      </a>
+    </div>
+    <ul>
+      <li><a href="/Components/Dashboard/Dashboard.html" id="dashboard-link">Dashboard</a></li>
+      <li><a href="/Components/Sales/Sales.html" id="sales-link">Sales</a></li>
+      <li><a href="/Components/Orders/orders.html" id="orders-link">Orders</a></li>
+      <li><a href="/Components/Users/users.html" id="users-link">Users</a></li>
+      <li><a href="/Components/Report/Report.html" id="report-link">Report</a></li>
+      <li class="logout-container">
+        <button id="logout-btn" class="logout-btn">Logout</button>
+      </li>
+    </ul>
+  </nav>
+
   <div class="dashboard">
-    <h1>Order Lists</h1>
+    <h1>Order List</h1>
     <div class="filters">
       <div class="filter">
         <label for="date">Date</label>
@@ -30,17 +49,25 @@
           <option>In Transit</option>
         </select>
       </div>
-      <button class="reset-button" id="view-supplier-btn">View Supplier Details</button>
+      <div class="button-container">
+        <button class="reset-button" id="new-order-button">Add new Order</button>
+        <div id="order-modal" class="hidden">
+          
+        </div>
+        <button class="reset-button" id="view-supplier-btn">View Supplier Details</button>
+      </div>
+
     </div>
     <table>
       <thead>
         <tr>
           <th>Order ID</th>
-          <th>Quantity</th>
-          <th>Supplier ID</th>
+          <th>Quantity(kg)</th>
+          <th>Supplier Name</th>
           <th>Date</th>
           <th>Product Name</th>
           <th>Status</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -67,9 +94,22 @@
     <div class="popup-content">
       <span class="close-btn" id="close-popup">&times;</span>
       <h2>Supplier Details</h2>
+      <button class="reset-button" onclick="openAddSupplierModal()">Add+</button>
+      <div id="modal-overlay" class="hidden"></div>
+      <div id="supplier-modal" class="modalS hidden">
+        <form id="supplier-form">
+          <h2>Add Supplier</h2>
+          <input type="text" id="supplier-name" placeholder="Name" required />
+          <input type="email" id="supplier-email" placeholder="Email" required />
+          <input type="tel" id="supplier-phone" placeholder="Phone" required />
+          <button type="submit">Add Supplier</button>
+          <button type="button" onclick="closeAddSupplierModal()">Close</button>
+        </form>
+      </div>
       <table class="supplier-table">
         <thead>
           <tr>
+            <th>ID</th>
             <th>Name</th>
             <th>Email</th>
             <th>Phone</th>
@@ -90,6 +130,7 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="/Components/Sidebar.js"></script>
+  <script src="ordersScript.js"></script>
 </body>
 </html>

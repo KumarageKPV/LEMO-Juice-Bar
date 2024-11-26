@@ -4,9 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sales Table</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="SalesStyles.css">
 </head>
 <body>
+  <!-- Horizontal Navbar -->
+  <nav class="navbar">
+    <div class="logo-container">
+      <a href="/Components/Dashboard/Dashboard.html">
+        <img src="/Components/logo.png" alt="Logo" class="logo">
+      </a>
+    </div>
+    <ul>
+      <li><a href="/Components/Dashboard/Dashboard.html" id="dashboard-link">Dashboard</a></li>
+      <li><a href="/Components/Sales/Sales.html" id="sales-link">Sales</a></li>
+      <li><a href="/Components/Orders/orders.html" id="orders-link">Orders</a></li>
+      <li><a href="/Components/Users/users.html" id="users-link">Users</a></li>
+      <li><a href="/Components/Report/Report.html" id="report-link">Report</a></li>
+      <li class="logout-container">
+        <button id="logout-btn" class="logout-btn">Logout</button>
+      </li>
+    </ul>
+  </nav>
+
   <div class="container">
     <div class="sales-header">
         <h1>Sales Overview</h1>
@@ -88,7 +107,7 @@
 
 
   </div>
-
-  <script src="script.js"></script>
+  <script src="SalesScript.js"></script>
+  <script src="Components/Sidebar.js"></script>
 </body>
 </html>

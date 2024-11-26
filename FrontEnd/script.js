@@ -19,13 +19,16 @@ document.getElementById("login-form").addEventListener("submit", async (event) =
             body: JSON.stringify(loginData)
         });
 
-        // Check for successful login
         if (response.ok) {
-            const data = await response.text();
-            console.log("Login successful:", data);
-            // You can perform further actions like redirecting to a dashboard here
+            const role = await response.text();  // Assuming the response is just the role as a string
+            console.log("Login successful, Role:", role);
+
+            // Store the role in localStorage
+            localStorage.setItem("userRole", role);
+
+            // Redirect to the dashboard after successful login
+            window.location.href = "/Components/Dashboard/Dashboard.html";
         } else {
-            // Handle invalid credentials
             const errorMessage = document.getElementById("error-message");
             errorMessage.classList.add("show");
             setTimeout(() => {
