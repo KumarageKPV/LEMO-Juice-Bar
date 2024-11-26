@@ -1,3 +1,4 @@
+/* Reset and global styles */
 /* General body styling */
 body {
     margin: 0;
@@ -11,83 +12,73 @@ body {
     height: 100vh;
 }
 
-/* Login container */
 .login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 100%;
     max-width: 400px;
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Login box styling */
-.login-box {
-    width: 100%;
     text-align: center;
 }
 
-.login-box h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #333;
+h1 {
+    margin-bottom: 1rem;
+    color: #333333;
 }
 
-/* Input group styling */
 .input-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
     text-align: left;
 }
 
-.input-group label {
-    font-size: 1rem;
-    margin-bottom: 5px;
-    color: #333;
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555555;
 }
 
-.input-group input {
+input {
     width: 100%;
-    padding: 10px;
+    padding: 0.8rem;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
     font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input:focus {
+    border-color: #549cd0;
     outline: none;
-    transition: border-color 0.3s;
+    box-shadow: 0 0 5px rgba(106, 103, 206, 0.5);
 }
 
-.input-group input:focus {
-    border-color: #007BFF;
-}
-
-/* Button styling */
 .login-btn {
-    width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    background-color: #007BFF;
-    color: white;
+    background-color: #4a90e2;
+    color: #ffffff;
     border: none;
-    border-radius: 5px;
+    padding: 0.8rem 1rem;
+    border-radius: 4px;
+    font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s;
+    width: 100%;
 }
 
 .login-btn:hover {
-    background-color: #0056b3;
+    background-color: #279ff5;
 }
 
-/* Error message */
-.error-message {
-    margin-top: 10px;
-    color: red;
+.register-link {
+    margin-top: 1rem;
     font-size: 0.9rem;
+    color: #777777;
 }
 
-.hidden {
-    display: none;
+.register-link a {
+    color: #6a67ce;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
 }
