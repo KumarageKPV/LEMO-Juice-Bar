@@ -3,12 +3,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const userRole = localStorage.getItem("userRole");
 
     // Hide the "Orders" page link if the role is EMPLOYEE
-    // if (userRole === "EMPLOYEE") {
-    //     const newOrderBtn = document.getElementById("new-order-button");
-    //     if (newOrderBtn) {
-    //         newOrderBtn.style.display = "none";  
-    //     }
-    // }
+    if (userRole === "EMPLOYEE") {
+        const newOrderBtn = document.getElementById("new-order-button");
+        const userMgt = document.getElementById("users-link")
+        if (newOrderBtn) {
+            newOrderBtn.style.display = "none";  
+        }
+        if(userMgt){
+            userMgt.style.pointerEvents = "none";
+        }
+    }
 
     // Add more role-based logic if necessary (like hiding/showing other elements)
 });

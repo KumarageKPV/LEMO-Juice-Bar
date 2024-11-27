@@ -1,5 +1,12 @@
 let saleToDelete = null; // Store the sale ID to delete
 let saleItems = []; // Store sale items before submitting the form
+document.getElementById("logout-btn").addEventListener("click", () => {
+  // Clear local storage
+  localStorage.clear();
+
+  // Redirect to login page
+  window.location.href = "/login.html";
+});
 
 // Fetch and populate sales data
 const fetchSales = async () => {
