@@ -125,14 +125,6 @@ The backend will start on `http://localhost:8080`.
 
 ## **API Endpoints**
 
-### **Reports**
-- **Sales Report**: `GET /api/reports/sales`  
-- **Inventory Report**: `GET /api/reports/inventory`  
-- **Juice Report**: `GET /api/reports/juice`  
-- **Supplier Report**: `GET /api/reports/supplier`  
-
----
-
 ### **Juice Management**
 - **Add a Juice**:  
   `POST /api/juice/add`  
@@ -306,7 +298,13 @@ The backend will start on `http://localhost:8080`.
   ```
 
 - **Get All Users**:  
-  `GET /api/users`  
+  `GET /api/users`
+
+### **Reports**
+- **Sales Report**: `GET /api/reports/sales`  
+- **Inventory Report**: `GET /api/reports/inventory`  
+- **Juice Report**: `GET /api/reports/juice`  
+- **Supplier Report**: `GET /api/reports/supplier`  
 
 ---
 
