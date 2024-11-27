@@ -217,8 +217,8 @@ The backend will start on `http://localhost:8080`.
   ```json
   {
     "name": "chamika",
-    "email": "chamikalakshaan@gmail.com",
-    "phone": "0768337430"
+    "email": "chamika123@gmail.com",
+    "phone": "0768323431"
   }
   ```
 
@@ -273,8 +273,8 @@ The backend will start on `http://localhost:8080`.
   `POST /api/users/create`  
   ```json
   {
-    "username": "bidddddtcsssh",
-    "password": "bitch23",
+    "username": "user",
+    "password": "pass",
     "role": "EMPLOYEE"
   }
   ```
