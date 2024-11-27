@@ -6,9 +6,29 @@
     <title>Reports & Analytics</title>
 
     <!-- Link to external CSS file for styling -->
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="Report.css" />
   </head>
   <body>
+    <nav class="navbar">
+      <div class="logo-container">
+        <a href="/Components/Dashboard/Dashboard.html">
+          <img src="/Components/logo.png" alt="Logo" class="logo">
+        </a>
+      </div>
+      <ul>
+        <li><a href="/Components/Dashboard/Dashboard.html" id="dashboard-link">Dashboard</a></li>
+        <li><a href="/Components/Sales/Sales.html" id="sales-link">Sales</a></li>
+        <li><a href="/Components/Orders/orders.html" id="orders-link">Orders</a></li>
+        <li><a href="/Components/Users/users.html" id="users-link">Users</a></li>
+        <li><a href="/Components/Report/Report.html" id="report-link">Report</a></li>
+        <li class="logout-container">
+          <button id="logout-btn" class="logout-btn">Logout</button>
+        </li>
+      </ul>
+    </nav>
+    <br>
+    <br>
+    <br>
     <div class="container">
       <!-- Filters Section -->
       <div id="report-modal" class="modal">
@@ -163,7 +183,8 @@
     </div>
     
     <!-- Link to external JavaScript file for functionality -->
-    <script src="scripts.js"></script>
+  <script src="/Components/Sidebar.js"></script>
+    <script src="Report.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </body>
 </html>
