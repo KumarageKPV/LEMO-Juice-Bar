@@ -4,7 +4,98 @@
     padding: 0;
     box-sizing: border-box;
 }
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4); /* Black with transparency */
+    padding-top: 60px;
+}
 
+/* Modal Content */
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    width: 80%;
+    max-width: 450px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #4a90e2;
+    text-decoration: none;
+}
+
+/* Heading Style */
+h3 {
+    text-align: center;
+    color: #333;
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* Label and Input Style */
+label {
+    font-size: 16px;
+    margin-bottom: 8px;
+    display: block;
+    color: #333;
+    font-family: Arial, sans-serif;
+}
+
+select, input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+select:focus, input[type="date"]:focus {
+    border-color: #4a90e2;
+    outline: none;
+}
+
+/* Button Styles */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #357ab7;
+}
+
+button:focus {
+    outline: none;
+}
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
@@ -62,7 +153,37 @@ body {
 .filters button:hover {
     background-color: #357ab7;
 }
-body {
+/* Ensure the parent container centers its content */
+.export-buttons-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically if needed */
+    width: 100%; /* Ensure full width */
+    margin-top: 20px; /* Add spacing from other content */
+  }
+  
+  /* Style for the button container */
+  .export-buttons {
+    display: flex; /* Align buttons in a row */
+    gap: 10px; /* Add spacing between buttons */
+  }
+  
+  /* Button styles */
+  .export-buttons button {
+    padding: 10px 20px; /* Add padding to buttons */
+    font-size: 16px; /* Adjust font size */
+    border: 1px solid #ccc; /* Add border */
+    border-radius: 5px; /* Round corners */
+    cursor: pointer; /* Add pointer cursor */
+    background-color: #007bff; /* Button background */
+    color: #fff; /* Text color */
+    transition: background-color 0.3s ease; /* Smooth hover transition */
+  }
+  
+  .export-buttons button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  dy {
     font-family: Arial, sans-serif;
   }
   
@@ -74,6 +195,11 @@ body {
     display: flex;
     justify-content: space-around;
     margin: 20px;
+  }
+  
+  #juice-revenue-chart-container {
+    margin: auto;
+    display: none;
   }
   
   .card {
@@ -91,6 +217,10 @@ body {
     width: 90%;
   }
   
+  #inventory-table-container{
+    margin: 20px auto;
+    width: 90%;
+  }
   table {
     width: 100%;
     border-collapse: collapse;
@@ -271,60 +401,4 @@ body {
       flex: 1 1 100%; /* 1 card per row on smaller screens */
     }
   }
-  
-  .navbar {
-    display: flex;
-    align-items: center;
-    background-color: #4a90e2;
-    padding: 10px 20px;
-  }
-  
-  .logo-container {
-    margin-right: 20px; /* Adds space between logo and navigation links */
-  }
-  
-  .logo {
-    height: 40px; /* Adjust height of the logo */
-    width: auto; /* Maintain aspect ratio */
-  }
-  
-  .navbar ul {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    align-items: center;
-  }
-  
-  .navbar ul li {
-    margin: 0 30px; /* Adds space between navigation items */
-  }
-  
-  .navbar ul li a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-  }
-  
-  .logout-container {
-    /* Removed margin-left: auto; to prevent pushing logout to the far right */
-  }
-  
-  .logout-btn {
-    background-color: #e74c3c;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-  }
-  
-  .logout-btn:hover {
-    background-color: #c0392b;
-  }
-  
-  
-  
   
