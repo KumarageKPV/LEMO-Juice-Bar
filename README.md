@@ -10,7 +10,7 @@ Team 4
 
 Project Description
 
-The LEMO Juice Bar Management System is a robust and user-friendly application designed to manage day-to-day operations of a juice bar. It offers features for inventory tracking, sales monitoring, product management, supplier coordination, and detailed report generation. The system enables interactions between backend and frontend components to enable efficient operations.
+The LEMO Juice Bar Management System is a user-friendly application designed to manage day-to-day operations of a juice bar. It offers features for inventory tracking, sales monitoring, product management, supplier coordination, and detailed report generation. The system enables interactions between backend and frontend components to enable efficient operations.
 
 Key Features
 
