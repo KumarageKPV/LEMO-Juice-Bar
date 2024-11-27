@@ -20,7 +20,7 @@ public class Inventory {
     public Inventory() {
     }
 
-    public Inventory(String fruitName, double quantity , String category) {
+    public Inventory(String fruitName, double quantity, String category) {
         this.fruitName = fruitName;
         this.quantity = quantity;
         this.category = category;
@@ -50,9 +50,11 @@ public class Inventory {
     public void setQuantity(double quantity) {
         this.quantity = quantity;
     }
+
     public String getCategory() {
         return category;
     }
+
     public void setCategory(String category) {
         this.category = category;
     }
