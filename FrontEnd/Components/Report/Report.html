@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reports & Analytics</title>
+
+    <!-- Link to external CSS file for styling -->
+    <link rel="stylesheet" href="Report.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo-container">
+        <a href="/Components/Dashboard/Dashboard.html">
+          <img src="/Components/logo.png" alt="Logo" class="logo">
+        </a>
+      </div>
+      <ul>
+        <li><a href="/Components/Dashboard/Dashboard.html" id="dashboard-link">Dashboard</a></li>
+        <li><a href="/Components/Sales/Sales.html" id="sales-link">Sales</a></li>
+        <li><a href="/Components/Orders/orders.html" id="orders-link">Orders</a></li>
+        <li><a href="/Components/Users/users.html" id="users-link">Users</a></li>
+        <li><a href="/Components/Report/Report.html" id="report-link">Report</a></li>
+        <li class="logout-container">
+          <button id="logout-btn" class="logout-btn">Logout</button>
+        </li>
+      </ul>
+    </nav>
+    <div class="container">
+      <!-- Filters Section -->
+      <div class="filters">
+        <h3>Generate Report</h3>
+
+        <!-- Start Date Picker -->
+        <label for="start-date">Start Date:</label>
+        <input type="date" id="start-date" placeholder="Start Date" />
+
+        <!-- End Date Picker -->
+        <label for="end-date">End Date:</label>
+        <input type="date" id="end-date" placeholder="End Date" />
+
+        <label for="report-type">Report Type</label>
+        <select id="report-type">
+          <option value="inventory">Inventory</option>
+          <option value="juice">Juice</option>
+          <option value="supplier">Supplier</option>
+          <option value="sales">Sales</option>
+        </select>
+
+        <!-- Generate Report Button -->
+        <button id="generate-report-btn" onclick="generateReport()">
+          Generate Report
+        </button>
+        <button id="refresh-page" onclick="clearCanvas()">Clear</button>
+      </div>
+
+      <!-- Summary Cards Section -->
+      <div class="summary-cards" id="summary-cards" style="display: none">
+        <!-- Total Sales -->
+        <div class="card">
+          <h3>Total Sales</h3>
+          <p id="total-sales-count">0</p>
+        </div>
+
+        <!-- Total Revenue -->
+        <div class="card">
+          <h3>Total Revenue</h3>
+          <p id="total-revenue">0</p>
+        </div>
+
+        <!-- Top-Selling Product -->
+        <div class="card">
+          <h3>Top-Selling Product</h3>
+          <p id="top-product">N/A</p>
+        </div>
+
+        <!-- Most Used Fruit -->
+        <div class="card">
+          <h3>Most Used Fruit</h3>
+          <p id="most-used-fruit">N/A</p>
+        </div>
+        <div class="card">
+          <h3>Average Revenue Per Sale</h3>
+          <p id="average-revenue">N/A</p>
+        </div>
+        <div class="card">
+          <h3>Day with Most Juices Sold</h3>
+          <p id="most-sales-day"></p>
+        </div>
+      </div>
+
+      <canvas id="sales-over-time-chart" width="400" height="200"></canvas>
+      <canvas id="top-selling-juices-chart" width="400" height="200"></canvas>
+      <canvas id="fruit-usage-chart" width="400" height="200"></canvas>
+
+      <!-- Detailed Table Section -->
+      <div class="sales-table" style="display: none">
+        <table>
+          <thead>
+            <tr>
+              <th>Sale Date</th>
+              <th>Product</th>
+              <th>Quantity Sold</th>
+              <th>Revenue</th>
+              <th>Payment Method</th>
+            </tr>
+          </thead>
+          <tbody id="sales-data">
+            <!-- Rows will be dynamically populated -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Link to external JavaScript file for functionality -->
+    <script src="Report.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/Components/Sidebar.js"></script>
+  </body>
+</html>
