@@ -4,7 +4,7 @@
   --secondary-color: #003366;
   --bg-light: #f4f4f4;
   --bg-dark: #00224f;
-  --accent-color: #e74c3c;
+  --accent-color: #dc3545;
   --hover-color: #555;
   --btn-hover: #125a8c;
   --gray-light: #eaeff1;
@@ -30,264 +30,28 @@ h2 {
   margin-bottom: 20px;
 }
 
-/* Navbar Styling */
+/* ==============================================Navbar Styling ========================================================================*/
+
 .navbar {
-  background-color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  background-color: var(--primary-color, #4a90e2); /* Uses --primary-color or defaults */
   width: calc(100% - 40px);
   margin-left: 20px;
-  padding: 10px 0;
+  padding: 10px 20px;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 100;
 }
 
-.navbar ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.logo-container {
+  margin-right: 20px; /* Space between logo and navigation links */
 }
 
-.navbar ul li {
-  padding: 0 20px;
-}
-
-.navbar ul li a {
-  text-decoration: none;
-  color: var(--text-color);
-  font-size: 18px;
-  padding: 10px 15px;
-  display: block;
-  transition: background-color 0.3s ease;
-}
-
-.navbar ul li a:hover {
-  background-color: var(--hover-color);
-  border-radius: 5px;
-}
-
-.navbar ul li a.active {
-  background-color: #777;
-  font-weight: bold;
-  border-radius: 5px;
-}
-
-/* Dashboard Styling */
-.dashboard-wrapper {
-  background-color: var(--bg-dark);
-  padding: 30px;
-  width: calc(100% - 40px);
-  max-width: 100vw;
-  margin: 20px;
-  position: relative;
-}
-
-.icon-container {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  display: flex;
-}
-
-.icon {
-  width: 30px;
-  height: 30px;
-  margin-left: 15px;
-  cursor: pointer;
-  color: #1d69a8;
-}
-
-.main-content {
-  padding: 20px;
-}
-
-.dashboard-stats {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin-bottom: 30px;
-}
-
-.stat-box {
-  background-color: var(--gray-light);
-  padding: 20px;
-  border-radius: 5px;
-  width: 48%;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.stat-box p {
-  margin-bottom: 10px;
-  font-size: 1.1rem;
-  color: var(--gray-dark);
-}
-
-.stat-box h3 {
-  font-size: 2rem;
-  color: var(--bg-dark);
-}
-
-/* Search Bar */
-.search-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 20px;
-}
-
-.search-bar, .filter-dropdown {
-  padding: 8px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-}
-
-.add-item-icon {
-  margin-left: 10px;
-  width: 110px;
-  height: 45px;
-  cursor: pointer;
-}
-
-/* Table Styling */
-.product-list table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-.product-list th, .product-list td {
-  padding: 15px;
-  text-align: center;
-  border-bottom: 1px solid #ddd;
-}
-
-.product-list th {
-  background-color: var(--secondary-color);
-  color: var(--text-color);
-}
-
-.product-list tr:nth-child(even) {
-  background-color: #ffffff;
-}
-
-.product-list table tbody tr {
-  background-color: #e0f7fa;
-}
-
-.product-list table tbody tr:nth-child(even) {
-  background-color: #b2ebf2;
-}
-
-/* Button Styling */
-.edit-btn, .delete-btn, .modal-content form button {
-  padding: 10px 20px;
-  font-size: 16px;
-  color: var(--text-color);
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.edit-btn {
-  background-color: var(--primary-color);
-}
-
-.delete-btn {
-  background-color: var(--accent-color);
-}
-
-.edit-btn:hover {
-  background-color: #125a8c;
-}
-
-.delete-btn:hover {
-  background-color: #c0392b;
-}
-
-/* Modal Styling */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.modal-content {
-  background-color: white;
-  margin: 15% auto;
-  padding: 20px;
-  border-radius: 5px;
-  width: 80%;
-  max-width: 600px;
-}
-
-.modal-content h2 {
-  margin-bottom: 20px;
-  font-size: 20px;
-  text-align: center;
-  color: var(--bg-dark);
-}
-
-.modal-content form input,
-.modal textarea {
-  display: block;
-  margin: 10px 0;
-  padding: 10px;
-  width: 100%;
-  border: 1px solid #BDC3C7;
-  border-radius: 5px;
-  font-size: 16px;
-  outline: none;
-}
-
-.modal-content form input:focus {
-  border-color: var(--primary-color);
-}
-
-.modal button {
-  background-color: var(--primary-color);
-  color: var(--text-color);
-}
-
-.modal button:hover {
-  background-color: var(--btn-hover);
-}
-
-.modal-content form button[type="button"] {
-  background-color: var(--accent-color);
-}
-
-.modal-content form button[type="button"]:hover {
-  background-color: #c0392b;
-}
-
-/* Responsive Adjustment */
-@media (max-width: 600px) {
-  .modal-content {
-    width: 80%;
-  }
-  
-  .modal-content h2 {
-    font-size: 18px;
-  }
-  
-  .modal button {
-    font-size: 14px;
-  }
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  background-color: #4a90e2;
-  padding: 10px 20px;
+.logo {
+  height: 40px;
+  width: auto;
 }
 
 .navbar ul {
@@ -305,7 +69,21 @@ h2 {
 
 .navbar ul li a {
   text-decoration: none;
-  color: white;
+  color: var(--text-color, white); /* Uses --text-color or defaults */
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 15px;
+  display: block;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+}
+
+.navbar ul li a:hover {
+  background-color: var(--hover-color, #555);
+}
+
+.navbar ul li a.active {
+  background-color: #777;
   font-weight: bold;
 }
 
@@ -327,56 +105,280 @@ h2 {
 .logout-btn:hover {
   background-color: #c0392b;
 }
-.navbar {
+
+
+/*================================================================stat boxes styling================================================================*/
+.dashboard-stats {
   display: flex;
-  align-items: center;
-  background-color: #4a90e2;
-  padding: 10px 20px;
+  gap: 1.5rem;
+  justify-content: space-between; /* Ensures cards spread evenly */
+  padding: 1rem;
+  width: 100%; /* Fits the width of the container */
+  box-sizing: border-box; /* Includes padding in width calculation */
 }
 
-.logo-container {
-  margin-right: 20px; /* Adds space between logo and navigation links */
+.stat-box {
+  flex: 1 1 auto; /* Adjust size based on available space */
+  background: #f5f3f3;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-width: calc(50% - 1.5rem); /* Each card takes up half the width, minus the gap */
+  position: relative; /* Allows relative positioning inside the box */
+  height:150px ;
 }
 
-.logo {
-  height: 40px; /* Adjust height of the logo */
-  width: auto; /* Maintain aspect ratio */
+.stat-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.navbar ul {
-  display: flex;
-  list-style: none;
-  padding: 0;
-  margin: 0;
+/* Icon Styling */
+.icon-container {
+  font-size: 2rem;
+  position:relative; 
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust for icon's width to perfectly center */
+}
+
+/*Number Styling */
+.stat-box h3 {
+  font-size: 1.2rem;
+  color: #2b2d42; 
+}
+
+/* Title  Styling */  
+.stat-box p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2b2d42;
+}
+
+/*==============================================================product list Table Styling=================================================== */
+.product-list table {
   width: 100%;
-  align-items: center;
+  border-collapse: collapse;
+  margin-top: 20px;
 }
 
-.navbar ul li {
-  margin-right: 20px;
+.product-list th, .product-list td {
+  padding: 15px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
 }
 
-.navbar ul li a {
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
+.product-list th {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
 }
 
-.logout-container {
-  margin-left: auto; /* Push logout button to the far right */
+#product-table tbody tr:hover {
+  background-color: #dbe7f2; /* Highlight row on hover */
+}
+/* Product list container */
+.product-list {
+  margin: 0 20px;
 }
 
-.logout-btn {
-  background-color: #e74c3c;
-  color: white;
+/* Product List Header Container */
+.product-list-header {
+  display: flex;
+  justify-content: space-between; /* Space out the elements */
+  align-items: center; /* Vertically center-align the elements */
+  width: 100%; /* Full width of the container */
+  padding: 10px 20px; /* Add some padding */
+}
+
+/* Product List heading */
+.product-list-header h3 {
+  font-size: 24px; /* Adjust font size if needed */
+  color: #333; /* Set text color */
+  white-space: nowrap;
+}
+
+/* Button Styling */
+ .delete-btn, .modal-content form button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: var(--text-color);
   border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
   cursor: pointer;
-  font-weight: bold;
+  border-radius: 5px;
   transition: background-color 0.3s ease;
 }
 
-.logout-btn:hover {
+.delete-btn {
+  background-color: var(--accent-color);
+}
+
+.delete-btn:hover {
   background-color: #c0392b;
+}
+
+/*========================================================Add Modal Container ==========================================================*/
+.modal {
+  display: none; /* Initially hidden */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex; /* Flexbox for centering */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Modal Content Box */
+.modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  width: 80%; /* You can adjust the width */
+  max-width: 600px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Box shadow for depth */
+}
+
+/* Modal Title */
+#modal-title {
+  text-align: center;
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Form Styling */
+#add-item-form {
+  display: flex;
+  flex-direction: column; /* Stack inputs vertically */
+  gap: 20px; /* Spacing between form elements */
+}
+
+#add-item-form input[type="text"],
+#add-item-form input[type="number"] {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+/* Focused Input */
+#add-item-form input[type="text"]:focus,
+#add-item-form input[type="number"]:focus {
+  border-color: #007bff; /* Blue border when focused */
+  outline: none;
+}
+
+/* Button Styling */
+#add-item-form button {
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Save Product Button */
+#add-item-form button[type="submit"] {
+  background-color: #4a90e2; /* Blue for save button */
+  color: white;
+}
+
+#add-item-form button[type="submit"]:hover {
+  background-color: #357abd; /* Darker blue on hover */
+}
+
+/* Close Modal Button */
+#close-modal {
+  background-color: #dc3545; /* Red for close button */
+  color: white;
+}
+
+#close-modal:hover {
+  background-color: #c82333; /* Darker red on hover */
+}
+
+/*====================================================== Add Item Button Icon size styling================================================== */
+.add-item-icon {
+  width: 110px;  /* Adjust width */
+  height: 45px; /* Adjust height */
+  margin-bottom: 0,5rem;
+  margin-left: auto
+}
+
+/*=======================================================Delete Item Modal Container========================================================== */
+/* Modal Container */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Modal Content Box */
+.modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 500px; /* Optional: Adjust max-width to fit content */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+/* Modal Title */
+.modal-content h2 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Button Container */
+.modal-content div {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px; /* Adds space between the buttons */
+}
+
+/* Button Styling */
+#confirm-delete, #cancel-delete {
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 45%; /* Fixed width for the buttons */
+  border: none; /* Remove border */
+}
+
+/* Confirm Delete Button */
+#confirm-delete {
+  background-color: #4a90e2; /* Blue color for confirm */
+  color: white;
+}
+
+#confirm-delete:hover {
+  background-color: #357abd; /* Darker blue on hover */
+}
+
+/* Cancel Delete Button */
+#cancel-delete {
+  background-color: #dc3545; /* Red color for cancel */
+  color: white;
+}
+
+#cancel-delete:hover {
+  background-color: #c82333; /* Darker red on hover */
 }

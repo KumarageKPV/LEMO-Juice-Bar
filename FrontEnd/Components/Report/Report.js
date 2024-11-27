@@ -391,6 +391,18 @@ function createPieChart(data) {
                       fontSize: 14  // Font size for the legend labels
                   }
               },
+              title: {
+                  display: true,
+                  text: 'Revenue by Juice',  // Title text
+                  font: {
+                      size: 18
+                  },
+                  padding:{
+                    top:30,
+                    bottom:20
+                  }
+                  
+              },
               tooltip: {
                   callbacks: {
                       label: function(tooltipItem) {
@@ -449,6 +461,17 @@ function createBarChart(data) {
           plugins: {
               legend: {
                   display: false  // Hide the legend (optional)
+              },
+              title: {
+                  display: true,
+                  text: 'Juice Sales',
+                  font: {
+                      size: 20,
+                  },
+                  padding:{
+                      top: 20,
+                      bottom: 20
+                  }
               }
           }
       }
@@ -487,6 +510,7 @@ function populateJuiceCards(data) {
   // Card 3: Total Revenue
   const totalRevenueCard = createCard('Total Revenue', `$${totalRevenue.toFixed(2)}`, `From all juices sold`);
   juiceCardsContainer.appendChild(totalRevenueCard);
+  juiceCardsContainer.style.display = "flex";
 }
 
 // Helper function to create a card with inline styles
@@ -660,8 +684,19 @@ createInventoryLevelsByFruit = (data) => {
         legend: {
           display: false, // Hide legend
         },
+        title: {
+          display: true,
+          text: "Inventory Levels by Item",
+          font:{
+            size:20,
+          
+        },
+        padding:{
+          top:10,
+          bottom:30,
+        }
       },
-    },
+    },}
   });
 };
 
@@ -825,8 +860,22 @@ function displayGraph(data) {
           },
         },
       },
+      plugins: {
+        title: {
+          display: true,
+          text: "Sales and Revenue Over Time",
+          font: {
+            size: 20,
+          },
+          padding: {
+            top: 10,
+            bottom: 30,
+          },
+        },
+      },
     },
   });
+  
 
   // Update the summary information on the page (optional)
   document.getElementById("total-sales-count").textContent = totalSales;
@@ -898,6 +947,17 @@ function generateTopSellingJuicesChart(data) {
       plugins: {
         legend: {
           position: "top", // Position the legend at the top
+        },
+        title: {
+          display: true,
+          text: "Top Selling Juices", // Chart title
+          font: {
+            size: 20,
+          },
+          padding: {
+            top: 10,
+            bottom: 30,
+          },
         },
       },
     },

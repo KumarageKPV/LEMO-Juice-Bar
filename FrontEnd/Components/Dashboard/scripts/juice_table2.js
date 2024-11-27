@@ -1,5 +1,7 @@
 async function fetchJuiceData() {
     const apiUrl = 'http://localhost:8080/api/juice'; // Replace with your API URL
+    const deleteJuiceModal = document.getElementById('delete-juice-modal');
+    deleteJuiceModal.style.display = 'none';    
 
     try {
         const response = await fetch(apiUrl, {
@@ -61,7 +63,7 @@ function populateJuiceTable(data) {
         // Create the delete button and set the juice ID as a data attribute
         const deleteButton = document.createElement("button");
         deleteButton.className = "delete-btn";
-        deleteButton.textContent = "🗑"; // Trash icon
+        deleteButton.textContent = "🗑 Delete"; // Trash icon
 
         // Set the data attribute for the delete button
         deleteButton.dataset.juiceId = item.id; // Assuming `id` is part of the API response
@@ -273,7 +275,7 @@ document.addEventListener('click', function (event) {
 
         // Show the confirmation modal
         const deleteModal = document.getElementById('delete-juice-modal');
-        deleteModal.style.display = 'block';
+        deleteModal.style.display = 'flex';
 
         // Set up the confirmation handler
         const confirmDeleteButton = document.getElementById('confirm-delete');
@@ -428,3 +430,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1500);
     }
 });
+
+document.onload = function () { 
+    const deleteJuiceModal = document.getElementById('delete-juice-modal');
+    deleteJuiceModal.style.display = 'none';
+}

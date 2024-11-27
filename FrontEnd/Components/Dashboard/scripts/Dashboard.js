@@ -66,7 +66,7 @@ function populateProductTable(data) {
 
         const deleteButton = document.createElement("button");
         deleteButton.className = "delete-btn";
-        deleteButton.textContent = "🗑"; // Trash icon
+        deleteButton.textContent = "🗑 Delete"; // Trash icon
         // Add delete functionality if needed
         actionsTd.appendChild(deleteButton);
 

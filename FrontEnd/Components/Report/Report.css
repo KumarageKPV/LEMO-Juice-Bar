@@ -521,6 +521,8 @@ body {
     gap: 16px; /* Adjusts space between cards */
   }
   
+
+  
   .card {
     flex: 1 1 calc(33.33% - 16px); /* Makes sure there are 3 cards per row */
     box-sizing: border-box;
