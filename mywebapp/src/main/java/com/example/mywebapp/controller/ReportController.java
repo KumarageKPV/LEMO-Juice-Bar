@@ -59,7 +59,7 @@ public class ReportController {
         } catch (Exception e) {
             // Return an error response if there's an issue generating the report
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(null);  // Or provide a meaningful error message
+                    .body(null);
         }
     }
 
@@ -197,7 +197,7 @@ public class ReportController {
             response.setContentType("text/csv");
             response.setHeader("Content-Disposition", "attachment; filename=\"juice_report.csv\"");
 
-            // Fetch the juice performance data (assuming the method returns a list of Map objects)
+            // Fetch the juice performance data
             List<Map<String, Object>> juiceList = reportService.generateJuicePerformanceReport();
 
             if (juiceList == null || juiceList.isEmpty()) {

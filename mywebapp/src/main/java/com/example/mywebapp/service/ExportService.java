@@ -180,7 +180,7 @@ public class ExportService {
 
             // Add fruit usage details for the juice
             document.add(new Paragraph("Ingredients:"));
-            // Assuming fruitUsages is part of the juice data map
+
             List<Map<String, Object>> fruitUsages = (List<Map<String, Object>>) juiceData.get("fruitUsages");  // Get the fruit usages
 
             if (fruitUsages != null && !fruitUsages.isEmpty()) {

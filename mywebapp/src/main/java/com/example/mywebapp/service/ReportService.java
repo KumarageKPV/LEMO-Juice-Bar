@@ -21,8 +21,7 @@ public class ReportService {
     private final SalesRepository salesRepository;
     private final InventoryRepository inventoryRepository;
     private final JuiceRepository juiceRepository;
-    private final SupplierRepository supplierRepository; // Added missing @Autowired for SupplierRepository
-
+    private final SupplierRepository supplierRepository; 
     @Autowired
     public ReportService(SalesRepository salesRepository,
                          InventoryRepository inventoryRepository,
@@ -50,8 +49,7 @@ public class ReportService {
         List<Map<String, Object>> performanceReport = new ArrayList<>();
 
         // Step 1: Get top-selling juices from the query results
-        List<Object[]> results = juiceRepository.findTopSellingJuices(); // Assuming you have this query in your repository
-
+        List<Object[]> results = juiceRepository.findTopSellingJuices();
         // Step 2: Fetch all juices along with their fruitUsages
         List<Juice> juices = juiceRepository.findAllWithFruitUsages(); // Use @EntityGraph or JOIN FETCH
 
@@ -97,7 +95,7 @@ public class ReportService {
     }
     // Method to generate the supplier report
     public List<Supplier> generateSupplierReport() {
-        // Fetch all suppliers from the repository (can be modified if any filtering is needed)
-        return supplierRepository.findAll(); // This will return all suppliers
+        // Fetch all suppliers from the repository
+        return supplierRepository.findAll();
     }
 }
