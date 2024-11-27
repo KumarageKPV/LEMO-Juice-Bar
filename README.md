@@ -15,9 +15,13 @@ The LEMO Juice Bar Management System is a robust and user-friendly application d
 Key Features
 
 •	Inventory management: Track juice stock levels, fruit usage, and reorder requirements.
+
 •	Sales tracking: Monitor daily sales, revenue generation, and top-selling products.
+
 •	Juice management: Display and manage different juice products and their ingredients.
+
 •	Supplier management: Keep track of supplier details, orders placed, and performance.
+
 •	Report generation: Generate detailed reports on sales, inventory, juice performance, and supplier activities.
 
 This project features a Java Spring Boot backend and a HTML/CSS/JavaScript frontend working together to manage operations for the LEMO Juice Bar. The backend, located in the ‘mywebapp’ folder, provides a RESTful API for seamless communication with the frontend, handling business logic, database interactions, and report generation in CSV and PDF formats. The frontend, organized in the `Frontend` folder, delivers a responsive and user-friendly interface with dashboards, interactive reports using Chart.js, and tools for managing inventory, sales, and suppliers. Together, they ensure efficient and reliable management of juice bar operations.
