@@ -6,54 +6,58 @@
     <title>Reports & Analytics</title>
 
     <!-- Link to external CSS file for styling -->
-    <link rel="stylesheet" href="Report.css" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <nav class="navbar">
-      <div class="logo-container">
-        <a href="/Components/Dashboard/Dashboard.html">
-          <img src="/Components/logo.png" alt="Logo" class="logo">
-        </a>
-      </div>
-      <ul>
-        <li><a href="/Components/Dashboard/Dashboard.html" id="dashboard-link">Dashboard</a></li>
-        <li><a href="/Components/Sales/Sales.html" id="sales-link">Sales</a></li>
-        <li><a href="/Components/Orders/orders.html" id="orders-link">Orders</a></li>
-        <li><a href="/Components/Users/users.html" id="users-link">Users</a></li>
-        <li><a href="/Components/Report/Report.html" id="report-link">Report</a></li>
-        <li class="logout-container">
-          <button id="logout-btn" class="logout-btn">Logout</button>
-        </li>
-      </ul>
-    </nav>
     <div class="container">
       <!-- Filters Section -->
-      <div class="filters">
-        <h3>Generate Report</h3>
+      <div id="report-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3>Generate Report</h3>
 
-        <!-- Start Date Picker -->
-        <label for="start-date">Start Date:</label>
-        <input type="date" id="start-date" placeholder="Start Date" />
+            <!-- Report Type Selector -->
+            <label for="report-type">Report Type</label>
+            <select id="report-type" onchange="toggleDateFields()">
+                <option value="inventory">Inventory</option>
+                <option value="juice">Juice</option>
+                <option value="supplier">Supplier</option>
+                <option value="sales">Sales</option>
+            </select>
 
-        <!-- End Date Picker -->
-        <label for="end-date">End Date:</label>
-        <input type="date" id="end-date" placeholder="End Date" />
+            <!-- Start Date Picker (Initially hidden) -->
+            <label for="start-date" id="start-date-label" style="display: none;">Start Date:</label>
+            <input type="date" id="start-date" placeholder="Start Date" style="display: none;" />
 
-        <label for="report-type">Report Type</label>
-        <select id="report-type">
-          <option value="inventory">Inventory</option>
-          <option value="juice">Juice</option>
-          <option value="supplier">Supplier</option>
-          <option value="sales">Sales</option>
-        </select>
+            <!-- End Date Picker (Initially hidden) -->
+            <label for="end-date" id="end-date-label" style="display: none;">End Date:</label>
+            <input type="date" id="end-date" placeholder="End Date" style="display: none;" />
 
-        <!-- Generate Report Button -->
-        <button id="generate-report-btn" onclick="generateReport()">
-          Generate Report
-        </button>
-        <button id="refresh-page" onclick="clearCanvas()">Clear</button>
-      </div>
-
+            <!-- Generate Report Button -->
+            <button id="generate-report-btn" onclick="generateReport()">Generate Report</button>
+            
+        </div>
+    </div>
+      <div id="supplier-table-container" style="display:none;">
+        <table id="supplier-table" style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th style="border: 1px solid #ddd; padding: 8px;">ID</th>
+                    <th style="border: 1px solid #ddd; padding: 8px;">Name</th>
+                    <th style="border: 1px solid #ddd; padding: 8px;">Email</th>
+                    <th style="border: 1px solid #ddd; padding: 8px;">Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Supplier data rows will be populated here -->
+            </tbody>
+        </table>
+    </div>
+    
+      <div class="summary-cards" id="juice-cards-container" style="display: none;">
+        <!-- Juice cards will be populated here -->
+    </div>
+    
       <!-- Summary Cards Section -->
       <div class="summary-cards" id="summary-cards" style="display: none">
         <!-- Total Sales -->
@@ -89,10 +93,41 @@
         </div>
       </div>
 
-      <canvas id="sales-over-time-chart" width="400" height="200"></canvas>
-      <canvas id="top-selling-juices-chart" width="400" height="200"></canvas>
-      <canvas id="fruit-usage-chart" width="400" height="200"></canvas>
+      <canvas id="sales-over-time-chart" width="400" height="200" style="display: none;"></canvas>
+      <canvas id="top-selling-juices-chart" width="400" height="200" style="display: none;"></canvas>
+      <canvas id="fruit-usage-chart" width="400" height="200" style="display: none;"></canvas>
+      <canvas id="juice-sales-chart" width="400" height="200" style="display: none;"></canvas>
+      <div id="juice-revenue-chart-container" style="width: 600px; height: 600px;">
+        <canvas id="juice-revenue-chart" width="400" height="200" style="display: none;"></canvas>
+    </div>
+    
 
+      <div class="export-buttons-container">
+        <div class="export-buttons" style="display: none;">
+          <button id="export-report-btn">
+            Export CSV Report
+          </button>
+          <button id="export-pdf-report-btn">
+            Export PDF Report
+          </button>
+          <button id="refresh-page" onclick="clearCanvas()">New Report</button>
+        </div>
+      </div>
+
+      <div id="juice-table-container" style="display:none;">
+        <table id="juice-table" style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th style="border: 1px solid #ddd; padding: 8px;">Juice Name</th>
+                    <th style="border: 1px solid #ddd; padding: 8px;">Price</th>
+                    <th style="border: 1px solid #ddd; padding: 8px;">Total Sold</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data rows will be populated here -->
+            </tbody>
+        </table>
+    </div>
       <!-- Detailed Table Section -->
       <div class="sales-table" style="display: none">
         <table>
@@ -112,9 +147,23 @@
       </div>
     </div>
 
+    <div id="inventory-table-container" style="display: none;">
+      <table id="inventory-table" style="border-collapse: collapse; width: 100%;">
+        <thead>
+          <tr>
+            <th style="border: 1px solid #ddd; padding: 8px;">Fruit Name</th>
+            <th style="border: 1px solid #ddd; padding: 8px;">Quantity</th>
+            <th style="border: 1px solid #ddd; padding: 8px;">Category</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Rows will be dynamically added here by the displayInventoryTable function -->
+        </tbody>
+      </table>
+    </div>
+    
     <!-- Link to external JavaScript file for functionality -->
-    <script src="Report.js"></script>
+    <script src="scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="/Components/Sidebar.js"></script>
   </body>
 </html>
