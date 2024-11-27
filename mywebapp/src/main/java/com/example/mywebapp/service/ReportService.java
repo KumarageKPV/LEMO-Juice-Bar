@@ -1,13 +1,11 @@
 package com.example.mywebapp.service;
 
-import com.example.mywebapp.model.Inventory;
-import com.example.mywebapp.model.Juice;
-import com.example.mywebapp.model.Sales;
-import com.example.mywebapp.model.Supplier;
+import com.example.mywebapp.model.*;
 import com.example.mywebapp.repository.InventoryRepository;
 import com.example.mywebapp.repository.JuiceRepository;
 import com.example.mywebapp.repository.SalesRepository;
 import com.example.mywebapp.repository.SupplierRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -47,28 +45,56 @@ public class ReportService {
         return inventoryRepository.findAll();
     }
 
-    // Generate a juice performance report
+    @Transactional
     public List<Map<String, Object>> generateJuicePerformanceReport() {
-        List<Object[]> results = juiceRepository.findTopSellingJuices(); // Get results from query
         List<Map<String, Object>> performanceReport = new ArrayList<>();
 
+        // Step 1: Get top-selling juices from the query results
+        List<Object[]> results = juiceRepository.findTopSellingJuices(); // Assuming you have this query in your repository
+
+        // Step 2: Fetch all juices along with their fruitUsages
+        List<Juice> juices = juiceRepository.findAllWithFruitUsages(); // Use @EntityGraph or JOIN FETCH
+
+        // Create a map to look up the Juice objects by their IDs
+        Map<Long, Juice> juiceMap = new HashMap<>();
+        for (Juice juice : juices) {
+            juiceMap.put(juice.getId(), juice);
+        }
+
+        // Step 3: Process the results and build the performance report
         for (Object[] result : results) {
             Juice juice = (Juice) result[0]; // Juice entity
             Long totalSold = (Long) result[1]; // Total sold quantity
 
-            // Map to store performance details
+            // Create a map for each juice's data
             Map<String, Object> juiceData = new HashMap<>();
             juiceData.put("id", juice.getId());
             juiceData.put("name", juice.getName());
             juiceData.put("price", juice.getPrice());
             juiceData.put("totalSold", totalSold);
 
-            performanceReport.add(juiceData); // Add to the report
+            // Fetch and process the fruit usage details (ingredients)
+            List<Map<String, Object>> fruitUsages = new ArrayList<>();
+            Juice fullJuice = juiceMap.get(juice.getId()); // Get the full juice with fruitUsages
+
+            if (fullJuice != null && fullJuice.getFruitUsages() != null) {
+                for (FruitUsage fruitUsage : fullJuice.getFruitUsages()) {
+                    Map<String, Object> fruitUsageData = new HashMap<>();
+                    fruitUsageData.put("fruitName", fruitUsage.getFruitName());
+                    fruitUsageData.put("quantityRequired", fruitUsage.getQuantityRequired());
+                    fruitUsages.add(fruitUsageData);
+                }
+                juiceData.put("fruitUsages", fruitUsages);
+            } else {
+                juiceData.put("fruitUsages", "No ingredients available.");
+            }
+
+            // Add the juice data to the performance report
+            performanceReport.add(juiceData);
         }
 
-        return performanceReport; // Return the report as a list of maps
+        return performanceReport; // Return the complete performance report
     }
-
     // Method to generate the supplier report
     public List<Supplier> generateSupplierReport() {
         // Fetch all suppliers from the repository (can be modified if any filtering is needed)

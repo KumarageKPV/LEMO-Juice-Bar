@@ -1,6 +1,7 @@
 package com.example.mywebapp.repository;
 
 import com.example.mywebapp.model.Juice;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -18,5 +19,8 @@ public interface JuiceRepository extends JpaRepository<Juice, Long> {
             "GROUP BY j.id " +
             "ORDER BY totalSold DESC")
     List<Object[]> findTopSellingJuices();
+
+    @Query("SELECT j FROM Juice j JOIN FETCH j.fruitUsages")
+    List<Juice> findAllWithFruitUsages();
 
 }

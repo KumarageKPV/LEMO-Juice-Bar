@@ -71,7 +71,6 @@ public class ExportService {
                 Long totalSoldLong = (Long) juiceData.get("totalSold");
                 Integer totalSold = totalSoldLong.intValue();
 
-
                 // Write the basic juice details
                 StringBuilder row = new StringBuilder();
                 row.append(juiceId).append(",")
@@ -80,20 +79,31 @@ public class ExportService {
                         .append(totalSold).append(",");
 
                 // Get fruit usage details (ingredients)
-                List<Map<String, Object>> fruitUsages = (List<Map<String, Object>>) juiceData.get("fruitUsages");
-                if (fruitUsages != null && !fruitUsages.isEmpty()) {
-                    // Join the fruit usage details with comma
-                    StringBuilder ingredients = new StringBuilder();
-                    for (Map<String, Object> fruitUsage : fruitUsages) {
-                        String fruitName = (String) fruitUsage.get("fruitName");
-                        Double quantityRequired = (Double) fruitUsage.get("quantityRequired");
-                        ingredients.append(fruitName).append(": ").append(quantityRequired).append(" kg, ");
+                Object fruitUsagesObj = juiceData.get("fruitUsages");
+
+                if (fruitUsagesObj instanceof List) {
+                    // Cast to List<Map<String, Object>> safely
+                    List<Map<String, Object>> fruitUsages = (List<Map<String, Object>>) fruitUsagesObj;
+
+                    if (fruitUsages != null && !fruitUsages.isEmpty()) {
+                        // Join the fruit usage details with comma
+                        StringBuilder ingredients = new StringBuilder();
+                        for (Map<String, Object> fruitUsage : fruitUsages) {
+                            String fruitName = (String) fruitUsage.get("fruitName");
+                            Double quantityRequired = (Double) fruitUsage.get("quantityRequired");
+                            ingredients.append(fruitName).append(": ").append(quantityRequired).append(" kg, ");
+                        }
+                        // Remove the last comma and space
+                        ingredients.setLength(ingredients.length() - 2);
+                        row.append(ingredients);
+                    } else {
+                        row.append("No ingredients available.");
                     }
-                    // Remove the last comma and space
-                    ingredients.setLength(ingredients.length() - 2);
-                    row.append(ingredients);
                 } else {
                     row.append("No ingredients available.");
+                    // Log the juiceData and fruitUsagesObj for debugging
+                    System.out.println("juiceData: " + juiceData);
+                    System.out.println("fruitUsagesObj type: " + (fruitUsagesObj != null ? fruitUsagesObj.getClass().getName() : "null"));
                 }
 
                 // Write the row to the CSV
@@ -101,7 +111,6 @@ public class ExportService {
             }
         }
     }
-
 
     // Export sales report to PDF (using iText)
     public void exportSalesToPdf(List<Sales> salesList, OutputStream outputStream) throws Exception {

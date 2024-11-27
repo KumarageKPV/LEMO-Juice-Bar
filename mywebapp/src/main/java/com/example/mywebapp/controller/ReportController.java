@@ -1,17 +1,17 @@
 package com.example.mywebapp.controller;
 
-import com.example.mywebapp.model.Inventory;
+import com.example.mywebapp.model.*;
 import com.example.mywebapp.service.ExportService;
 import com.example.mywebapp.service.ReportService;
-import com.example.mywebapp.model.Sales;
-import com.example.mywebapp.model.Juice;
-import com.example.mywebapp.model.Supplier;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -175,14 +175,20 @@ public class ReportController {
 
     // Endpoint to generate a juice performance report
     @GetMapping("/juice")
-    public ResponseEntity<?> getJuicePerformanceReport() {
+    public ResponseEntity<?> generateJuicePerformanceReport() {
         try {
-            return ResponseEntity.ok(reportService.generateJuicePerformanceReport());
+            // Generate the juice performance report by calling the service
+            List<Map<String, Object>> juiceList = reportService.generateJuicePerformanceReport();
+
+            // Return the response as JSON
+            return ResponseEntity.ok(juiceList);
         } catch (Exception e) {
+            // Return error response if an exception occurs
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Error generating juice performance report: " + e.getMessage());
         }
     }
+
 
     @GetMapping("/juice/export/csv")
     public void exportJuiceToCsv(HttpServletResponse response) {
