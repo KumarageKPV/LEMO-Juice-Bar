@@ -300,6 +300,8 @@ The backend will start on `http://localhost:8080`.
 - **Get All Users**:  
   `GET /api/users`
 
+---
+
 ### **Reports**
 - **Sales Report**: `GET /api/reports/sales`  
 - **Inventory Report**: `GET /api/reports/inventory`  
