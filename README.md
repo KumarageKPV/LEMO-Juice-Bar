@@ -125,11 +125,188 @@ The backend will start on `http://localhost:8080`.
 
 ## **API Endpoints**
 
-- **Sales Report**: `/api/reports/sales`  
-- **Inventory Report**: `/api/reports/inventory`  
-- **Juice Report**: `/api/reports/juice`  
-- **Supplier Report**: `/api/reports/supplier`  
+### **Reports**
+- **Sales Report**: `GET /api/reports/sales`  
+- **Inventory Report**: `GET /api/reports/inventory`  
+- **Juice Report**: `GET /api/reports/juice`  
+- **Supplier Report**: `GET /api/reports/supplier`  
 
+---
+
+### **Juice Management**
+- **Add a Juice**:  
+  `POST /api/juice/add`  
+  ```json
+  {
+    "name": "Orange Juice",
+    "price": 150,
+    "fruitUsages": [
+      {
+        "fruitName": "Orange",
+        "quantityRequired": 2
+      }
+    ]
+  }
+  ```
+
+- **Update Juice**:  
+  `PUT /api/juice/{id}?newPrice={newPrice}`  
+  ```json
+  [
+    {
+      "fruitName": "Orange",
+      "quantityRequired": 0.560
+    }
+  ]
+  ```
+
+- **Delete a Juice**:  
+  `DELETE /api/juice/{id}`  
+
+- **Get All Juices**:  
+  `GET /api/juice/`
+
+---
+
+### **Sales Management**
+- **Add a Sale**:  
+  `POST /api/sales`  
+  ```json
+  {
+    "sale_date": "2024-10-07",
+    "payment_method": "Cash",
+    "price": 300,
+    "saleItems": [
+      {
+        "quantity": 1,
+        "juice": {
+          "name": "Orange Juice"
+        }
+      }
+    ]
+  }
+  ```
+
+- **Delete a Sale**:  
+  `DELETE /api/sales/{id}`  
+
+- **Get All Sales**:  
+  `GET /api/sales`  
+
+---
+
+### **Inventory Management**
+- **Add Inventory Items**:  
+  `POST /api/inventory/add`  
+  ```json
+  {
+    "fruitName": "Banana",
+    "quantity": "5",
+    "category": "fruit"
+  }
+  ```
+
+- **Delete Inventory Item**:  
+  `DELETE /api/inventory/delete`  
+  ```json
+  {
+    "fruitName": "Banana"
+  }
+  ```
+
+- **View Inventory**:  
+  `GET /api/inventory`
+
+---
+
+### **Supplier Management**
+- **Add a Supplier**:  
+  `POST /api/supplier`  
+  ```json
+  {
+    "name": "chamika",
+    "email": "chamikalakshaan@gmail.com",
+    "phone": "0768337430"
+  }
+  ```
+
+- **Update a Supplier**:  
+  `PUT /api/supplier/{id}`  
+  ```json
+  {
+    "name": "Updated Supplier Name",
+    "email": "updated.email@example.com",
+    "phone": "1234567890"
+  }
+  ```
+
+- **Delete a Supplier**:  
+  `DELETE /api/suppliers`  
+  ```json
+  {
+    "name": "chamika"
+  }
+  ```
+
+- **Get All Suppliers**:  
+  `GET /api/suppliers`  
+
+---
+
+### **Order Management**
+- **Add an Order**:  
+  `POST /api/orders`  
+  ```json
+  {
+    "supplier": {
+      "id": 1
+    },
+    "productName": "Apples",
+    "quantity": 50,
+    "orderDate": "2024-11-25"
+  }
+  ```
+
+- **Update Order Status**:  
+  `PUT /api/orders/{id}/status?status={status}`  
+  *Example:* `status = PENDING | RECEIVED | CANCELLED`  
+
+- **Get All Orders**:  
+  `GET /api/orders`  
+
+---
+
+### **User Management**
+- **Create an Account**:  
+  `POST /api/users/create`  
+  ```json
+  {
+    "username": "bidddddtcsssh",
+    "password": "bitch23",
+    "role": "EMPLOYEE"
+  }
+  ```
+
+- **Login to an Account**:  
+  `POST /api/users/login`  
+  ```json
+  {
+    "username": "user",
+    "password": "pass"
+  }
+  ```
+
+- **Update Password**:  
+  `PUT /api/users/password`  
+  ```json
+  {
+    "username": "newUser",
+    "password": "newPass"
+  }
+  ```
+
+- **Get All Users**:  
+  `GET /api/users`  
 
 ---
 
