@@ -303,12 +303,6 @@ The backend will start on `http://localhost:8080`.
 ---
 
 ### **Reports**
-- **Sales Report**: `GET /api/reports/sales`  
-- **Inventory Report**: `GET /api/reports/inventory`  
-- **Juice Report**: `GET /api/reports/juice`  
-- **Supplier Report**: `GET /api/reports/supplier`  
-
-Additional Endpoints for Reports:
 
 - **Inventory Report (with export options)**:
   - `GET /api/reports/inventory`
